@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>server homePage</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+<body>
+    $$__$$
+    <script>
+    function jump(dirAdress, name) {
+        console.log(dirAdress)
+        console.log(location.host)
+        console.log(location)
+        if (location.href[location.href.length - 1] === '/') {
+            location.href = location.href + name
+        } else {
+            location.href = location.href + '/' + name
+        }
+        
+    }
+    </script>
+</body>
+</html>
