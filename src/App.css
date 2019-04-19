@@ -14,6 +14,13 @@
 .App-link {
   color: #61dafb;
 }
+.title_Name {
+  font-size: 1rem;
+}
+.title_Name .title_subbar {
+  font-size: 0.6rem;
+  background-image: linear-gradient(to right, orangered 50%, green 100%);
+}
 .server_status {
   width: 50px;
   height: 50px;
@@ -37,4 +44,13 @@
   text-align: left;
   padding: 5px 0px;
   border-bottom: 1px solid rgba(255, 69, 0, .3);
+}
+.infoTips {
+  color: orangered;
+}
+.errTips {
+  color: red;
+}
+.commonTips {
+  color: lightseagreen;
 }
