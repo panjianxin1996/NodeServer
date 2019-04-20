@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { updateLabel } from 'typescript';
+// import { updateLabel } from 'typescript';
 let ipcRenderer = window.require('electron').ipcRenderer;
 
 class App extends Component {
@@ -23,10 +23,16 @@ class App extends Component {
             NodeJS Server Provided By PanJianxin<sup className='title_subbar'>NSPBP</sup>
           </p>
           <input type="text" value={this.state.dirName} onChange={this.changeDirName}/>
+          <div className='tips'>我们将启动服务与<b>3030</b>端口上，并且以你以上指定的路径问服务器根路径。</div>
           <p>{this.state.dirName}</p>
-          <p className='server_status' style={{backgroundColor: this.state.serverStatus === 0 ? 'gray' :  this.state.serverStatus === 1 ? 'green' : 'red'}}></p>
-          <button className='click_button' onClick={this.startServer}>server start</button>
-          <button className='click_button' onClick={this.stopServer}>server stop</button>
+          <div className='flex_row status_box'>
+            <p>server status:</p>
+            <p className='server_status' style={{backgroundColor: this.state.serverStatus === 0 ? 'gray' :  this.state.serverStatus === 1 ? 'green' : 'red'}}></p>
+          </div>
+          <div className='button_box'>
+            <button className='click_button' onClick={this.startServer}>server start</button>
+            <button className='click_button' onClick={this.stopServer}>server stop</button>
+          </div>
           <ul className='console_box'>
             {msgDom}
           </ul>

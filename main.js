@@ -22,13 +22,13 @@ let createWindow = () => {
         height: 600
     });
     // 加载应用中的index.html文件
-    mainWindow.loadURL('http://localhost:3000/')
+    // mainWindow.loadURL('http://localhost:3000/')
     // 打包环境
-    // mainWindow.loadURL(url.format({
-    //     pathname: path.join(__dirname, './build/index.html'),
-    //     protocol: 'file:',
-    //     slashes: true
-    // }))
+    mainWindow.loadURL(url.format({
+        pathname: path.join(__dirname, './build/index.html'),
+        protocol: 'file:',
+        slashes: true
+    }))
 
     // 当window被关闭时，除掉window的引用
     mainWindow.on('closed', () => {

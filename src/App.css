@@ -21,10 +21,29 @@
   font-size: 0.6rem;
   background-image: linear-gradient(to right, orangered 50%, green 100%);
 }
+.flex_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .server_status {
-  width: 50px;
-  height: 50px;
+  width: 32px;
+  height: 32px;
+  margin-left: 30px;
   border-radius: 50%;
+}
+.tips {
+  font-size: 12px;
+}
+.button_box {
+  display: flex;
+  flex-direction: row;
+}
+.button_box .click_button {
+  margin: 0px 15px;
+  padding: 5px;
+  border-radius: 50px;
+  color: #333;
 }
 .console_box {
   width: 80%;

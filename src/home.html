@@ -6,10 +6,68 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>server homePage</title>
     <style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
+        .list_box {
+            padding: 0;
+        }
+        .list_box .list_title {
+            display: flex;
+            flex-direction: row;
+            background-color: black;
+            color: wheat;
+            font-size: 18px;
+        }
+        .list_box .list_title p {
+            text-align: center;
+        }
+        .list_box .list_title p:first-child {
+            width: 50%;
+            text-align: left; 
+        }
+        .list_box .list_title p:nth-child(2) {
+            width: 10%;
+        }
+        .list_box .list_title p:nth-child(3) {
+            width: 10%;
+        }
+        .list_box .list_title p:last-child {
+            width: 30%;
+        }
+        .list_box .list_item {
+            display: flex;
+            flex-direction: row;
+            background-color: rgb(232, 249, 255);
+            cursor: pointer;
+            list-style-type: none;
+        }
+        .list_box .list_item:hover {
+            background-color: rgb(255, 224, 212);
+        }
+        .list_box .list_item p {
+            text-align: center; 
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space:nowrap;
+            font-size: 14px;
+        }
+        .list_box .list_item p:first-child {
+            width: 50%;
+            text-align: left; 
+        }
+        .list_box .list_item p:nth-child(2) {
+            width: 10%;
+        }
+        .list_box .list_item p:nth-child(3) {
+            width: 10%;
+        }
+        .list_box .list_item p:last-child {
+            width: 30%;
+        }
+        .images {
+            width: 20px;
+            text-align: left; 
+            padding: 0px 5px;
+            vertical-align:middle;
+        }
     </style>
 </head>
 <body>
@@ -18,13 +76,15 @@
     function jump(dirAdress, name) {
         console.log(dirAdress)
         console.log(location.host)
-        console.log(location)
+        console.log(JSON.stringify(location))
         if (location.href[location.href.length - 1] === '/') {
             location.href = location.href + name
         } else {
             location.href = location.href + '/' + name
         }
-        
+    }
+    function back () {
+        history.back()
     }
     </script>
 </body>
