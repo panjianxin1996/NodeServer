@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       port: 3030,
       serverStatus: 0,
-      dirName: 'F:/360Downloads',
+      dirName: '',
       tips: '',
       serverMsgList: []
     }
@@ -76,8 +76,9 @@ class App extends Component {
     })
   }
   changeDirName = (e) => {
+    let tmpVal = e.target.value.replace("\\","\/")
     this.setState({
-      dirName: e.target.value
+      dirName: tmpVal
     })
   }
   setLog (msg) {

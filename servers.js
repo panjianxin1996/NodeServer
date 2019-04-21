@@ -4,6 +4,7 @@ let fs = require('fs')
 let http = require('http')
 let url = require('url')
 let mime = require("mime")
+// console.log(mime)
 process.on('message', function(data) {
     if (data === 'serverStop') {
         process.send({trigger: 'stop', pid: process.pid,  info: {status: '10', msg: 'stopSuccess'}}) //杀掉服务器进程
@@ -47,6 +48,7 @@ process.on('message', function(data) {
                         if (err) process.send({trigger: 'start', info: {status: '13', msg: err}}) //console.log(err)
                         let urlArr = pathname.split('/')
                         let fileName = urlArr[urlArr.length -1]
+                        let extrName = fileName.split('.')
                         // console.log(extrName[extrName.length - 1])
                         res.writeHead(200, { 'Content-Type': mime.getType(fileName)})
                         res.end(data)
@@ -61,19 +63,19 @@ process.on('message', function(data) {
                     fs.readdir(data.dirName + pathname, (err, dat) => {
                         dirData = ''
                         let fileData = ''
-                        // dirImgBuf = fs.readFileSync('./src/img/dir.png').toString('base64')
-                        // fileImgBuf = fs.readFileSync('./src/img/file.png').toString('base64')
+                        dirImgBuf = fs.readFileSync(__dirname + '/src/img/dir.png').toString('base64')
+                        fileImgBuf = fs.readFileSync(__dirname + '/src/img/file.png').toString('base64')
                         dat.forEach(element => {
                             if (fs.statSync(data.dirName + pathname + '/' + element).isDirectory()) {
                                     dirData += `<li onclick="jump('${data.dirName}/${element}','${element}')" title='${data.dirName}/${element}'  class='list_item'>
-                                    <p>${element}</p>
+                                    <p><img class='images' src='data:image/png;base64,${dirImgBuf}'/>${element}</p>
                                     <p>文件夹</p>
                                     <p>---</p>
                                     <p>${new Date(fs.statSync(data.dirName + pathname + '/' + element).mtimeMs).toLocaleString()}</p>
                                     </li>`
                             } else {
                                 fileData += `<li onclick="jump('${data.dirName}/${element}','${element}')" title='${data.dirName}/${element}'  class='list_item'>
-                                <p>${element}</p>
+                                <p><img class='images' src='data:image/png;base64,${fileImgBuf}'/>${element}</p>
                                 <p>文件</p>
                                 <p>${parseInt((fs.statSync(data.dirName + pathname + '/' + element).size) / 1024)}KB</p>
                                 <p>${new Date(fs.statSync(data.dirName + pathname + '/' + element).mtimeMs).toLocaleString()}</p>
@@ -99,7 +101,7 @@ process.on('message', function(data) {
                         </ul>
                         </section>`
                         // 请求模板页面渲染
-                        fs.readFile('./src/home.html', (err, data) => {
+                        fs.readFile(__dirname + '/src/home.html', (err, data) => {
                             if (err) process.send({trigger: 'start', info: {status: '13', msg: err}}) //console.log(err)
                             let htmlTemplate = data.toString()
                             htmlTemplate = htmlTemplate.replace('$$__$$', innerHtmlData)
@@ -112,7 +114,7 @@ process.on('message', function(data) {
                 }
             } else {
                 // 请求图标logo
-                fs.readFile('./public/favicon.ico', (err, data) => {
+                fs.readFile(__dirname + '/public/favicon.ico', (err, data) => {
                     if (err) process.send({trigger: 'start', info: {status: '13', msg: err}}) //console.log(err)
                     let urlArr = pathname.split('/')
                     let fileName = urlArr[urlArr.length -1]

@@ -15,7 +15,8 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "mime": "^2.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,7 +40,6 @@
     "electron": "^4.1.4",
     "electron-builder": "^20.39.0",
     "electron-packager": "^13.1.1",
-    "mime": "^2.4.2",
     "typescript": "^3.4.3"
   }
 }

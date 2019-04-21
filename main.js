@@ -18,8 +18,8 @@ let mainWindow;
 let createWindow = () => {
     // 创建浏览器窗口
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600
+        width: 400,
+        height: 700
     });
     // 加载应用中的index.html文件
     // mainWindow.loadURL('http://localhost:3000/')
@@ -34,7 +34,7 @@ let createWindow = () => {
     mainWindow.on('closed', () => {
         mainWindow = null;
     });
-    mainWindow.openDevTools()
+    // mainWindow.openDevTools()
 }
 
 // ipc monitor
